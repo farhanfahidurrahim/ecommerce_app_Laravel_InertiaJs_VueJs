@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/', function () {
+//     return inertia(component:'Welcome');
+// });
 
-Route::get('/', function () {
-    return inertia(component:'Welcome');
-});
+Route::redirect('/', '/dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/slider', [SliderController::class, 'index']);
+Route::get('/slider/create', [SliderController::class, 'create']);
