@@ -17,11 +17,11 @@
         </a>
       </li>
       <li class="nav-item">
-        <inertia-link class="nav-link" href="/dashboard"
+        <Link class="nav-link" href="/dashboard"
           >Dashboard
           <!-- <span class="menu-title"></span>
           <i class="mdi mdi-home menu-icon"></i> -->
-        </inertia-link>
+        </Link>
       </li>
       <!-- <li class="nav-item">
         <a
@@ -51,20 +51,17 @@
         </div>
       </li> -->
       <li class="nav-item">
-        <inertia-link class="nav-link" href="/slider">
+        <Link class="nav-link" href="/slider">
           <span class="menu-title">Slider</span>
           <i class="mdi mdi-contacts menu-icon"></i>
-        </inertia-link>
+        </Link>
       </li>
     </ul>
   </nav>
 </template>
 
-<script>
+<script setup>
 import { Link } from '@inertiajs/vue3'
-export default {
-  component: { Link },
-};
 </script>
 
 <style>

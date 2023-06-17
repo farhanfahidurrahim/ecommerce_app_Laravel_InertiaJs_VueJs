@@ -11,8 +11,13 @@
         <nav aria-label="breadcrumb">
           <ul class="breadcrumb">
             <li class="breadcrumb-item active" aria-current="page">
-              <span></span>Slider/Create
-              <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+              <span></span>Slider/Edit
+              <i class="
+                      mdi mdi-alert-circle-outline
+                      icon-sm
+                      text-primary
+                      align-middle
+                    "></i>
             </li>
           </ul>
         </nav>
@@ -23,20 +28,18 @@
           <div class="card">
             <div class="card-body">
               <!-- <h4 class="card-title">Default form</h4>
-              <p class="card-description">Basic form layout</p> -->
+                <p class="card-description">Basic form layout</p> -->
               <form class="forms-sample" @submit.prevent="submit" accept="multipart/form-data">
                 <div class="form-group">
                   <label for="sl-position">Position</label>
                   <input type="number" v-model="form.slider_position" class="form-control" id="sl-position"
                     placeholder="Slider Position" />
-                    <div v-if="errors.slider_position" style="color: red;">{{ errors.slider_position }}</div>
+                  <div v-if="errors.slider_position" style="color: red;">{{ errors.slider_position }}</div>
                 </div>
                 <div class="form-group">
                   <label for="sl-img">Choose Image</label>
-                  <input type="file" accept="image/*" @input="
-                    form.slider_image =
-                    $event.target.files[0]
-                  " class="form-control" id="sl-img" />
+                  <input type="file" accept="image/*" @input="form.slider_image = $event.target.files[0]"
+                    class="form-control" id="sl-img" />
                   <progress v-if="form.progress" :value="form.progress.percentage" max="100">
                     {{ form.progress.percentage }}%
                   </progress>
@@ -60,13 +63,14 @@ import AdminLayout from "../../../Shared/AdminLayout.vue";
 export default {
   layout: AdminLayout,
   props: {
-    errors: Object
+    errors: Object,
+    slider: Object
   },
   data() {
     return {
       form: this.$inertia.form({
-        slider_position: null,
-        slider_image: null,
+        slider_position: this.slider.position ?? null,
+        slider_image: null
       }),
     };
   },
@@ -80,7 +84,7 @@ export default {
 </script>
 
 <script setup>
-import { Link } from "@inertiajs/vue3";
+import { Link } from '@inertiajs/vue3'
 </script>
 
 <style></style>

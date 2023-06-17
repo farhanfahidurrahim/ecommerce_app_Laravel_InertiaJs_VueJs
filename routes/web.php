@@ -20,5 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/dashboard');
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::get('/slider', [SliderController::class, 'index']);
+Route::get('/slider', [SliderController::class, 'index'])->name('slider.index');
 Route::get('/slider/create', [SliderController::class, 'create']);
+Route::post('/slider/store', [SliderController::class, 'store']);
+Route::get('/slider/{id}/edit', [SliderController::class, 'edit']);
+Route::get('/slider/{id}/delete', [SliderController::class, 'destroy']);
