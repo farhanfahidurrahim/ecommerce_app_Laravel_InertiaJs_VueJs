@@ -33,10 +33,7 @@
                 </div>
                 <div class="form-group">
                   <label for="sl-img">Choose Image</label>
-                  <input type="file" accept="image/*" @input="
-                    form.slider_image =
-                    $event.target.files[0]
-                  " class="form-control" id="sl-img" />
+                  <input type="file" accept="image/*" @input="form.slider_image=$event.target.files[0]" class="form-control" id="sl-img" />
                   <progress v-if="form.progress" :value="form.progress.percentage" max="100">
                     {{ form.progress.percentage }}%
                   </progress>

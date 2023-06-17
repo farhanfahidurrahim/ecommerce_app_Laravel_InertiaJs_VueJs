@@ -56,6 +56,13 @@
           <i class="mdi mdi-contacts menu-icon"></i>
         </Link>
       </li>
+
+      <li class="nav-item">
+        <Link class="nav-link" href="/brand">
+          <span class="menu-title">Brands</span>
+          <i class="mdi mdi-contacts menu-icon"></i>
+        </Link>
+      </li>
     </ul>
   </nav>
 </template>
