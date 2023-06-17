@@ -24,4 +24,5 @@ Route::get('/slider', [SliderController::class, 'index'])->name('slider.index');
 Route::get('/slider/create', [SliderController::class, 'create']);
 Route::post('/slider/store', [SliderController::class, 'store']);
 Route::get('/slider/{id}/edit', [SliderController::class, 'edit']);
-Route::get('/slider/{id}/delete', [SliderController::class, 'destroy']);
+Route::post('/slider/{id}/update', [SliderController::class, 'update']);
+Route::post('/slider/{id}/delete', [SliderController::class, 'destroy']);

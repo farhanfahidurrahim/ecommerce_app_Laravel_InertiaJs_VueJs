@@ -46,7 +46,7 @@
                   <div v-if="errors.slider_image" style="color: red;">{{ errors.slider_image }}</div>
                 </div>
                 <button type="submit" :disabled="form.processing" class="btn btn-gradient-primary me-2">
-                  Submit
+                  Update
                 </button>
                 <Link href="/slider" class="btn btn-light">Back</Link>
               </form>
@@ -77,7 +77,7 @@ export default {
 
   methods: {
     submit() {
-      this.form.post("/slider/store");
+      this.form.post(`/slider/${this.slider.id}/update`);
     },
   },
 };

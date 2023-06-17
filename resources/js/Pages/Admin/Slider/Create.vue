@@ -28,7 +28,7 @@
                 <div class="form-group">
                   <label for="sl-position">Position</label>
                   <input type="number" v-model="form.slider_position" class="form-control" id="sl-position"
-                    placeholder="Slider Position" />
+                    placeholder="Slider Position" max="10"/>
                     <div v-if="errors.slider_position" style="color: red;">{{ errors.slider_position }}</div>
                 </div>
                 <div class="form-group">
