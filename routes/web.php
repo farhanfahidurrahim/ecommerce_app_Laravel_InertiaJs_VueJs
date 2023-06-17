@@ -29,9 +29,6 @@ Route::get('/slider/{id}/edit', [SliderController::class, 'edit']);
 Route::post('/slider/{id}/update', [SliderController::class, 'update']);
 Route::post('/slider/{id}/delete', [SliderController::class, 'destroy']);
 
-Route::get('/brand', [BrandController::class, 'index']);
-Route::get('/brand/create', [SliderController::class, 'create']);
-Route::post('brand/store', [SliderController::class, 'store']);
-Route::get('/brand/{id}/edit', [SliderController::class, 'edit']);
-Route::post('brand/{id}/update', [SliderController::class, 'update']);
-Route::post('/slider/{id}/delete', [SliderController::class, 'destroy']);
+Route::get('/brand', [BrandController::class, 'index'])->name('brand.index');
+Route::get('/brand/create', [BrandController::class, 'create']);
+Route::post('brand/store', [BrandController::class, 'store']);

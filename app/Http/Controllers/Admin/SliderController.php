@@ -51,7 +51,7 @@ class SliderController extends Controller
         ]);
         $model=Slider::findOrFail($id);
         if ($request->hasFile('slider_image')) {
-            $model->image=$request->file('slider_image')->store('images/slide','public');
+            $model->image=$request->file('slider_image')->store('images/slider','public');
         }
         $model->position=$request->slider_position;
         $model->save();

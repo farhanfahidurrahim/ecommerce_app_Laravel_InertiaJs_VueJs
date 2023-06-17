@@ -18,18 +18,26 @@
 
             <div class="card">
                 <div class="card-body">
-                    <Link class="btn btn-primary btn-sm card-title mb-4 text-right" href="/slider/create">Create</Link>
+                    <Link class="btn btn-primary btn-sm card-title mb-4 text-right" href="/brand/create">Create</Link>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th> # </th>
-                                <th> Slider Image</th>
-                                <th> Position </th>
+                                <th> Brand Name</th>
+                                <th> Image </th>
                                 <th> Action </th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            <tr v-for="brand in brands" :key="brand.id">
+                                <td>{{ brand.id }}</td>
+                                <td>{{ brand.name }}</td>
+                                <td> <img :src="'/storage/'+brand.image"/> </td>
+                                <td>
+                                    <Link class="btn btn-primary btn-sm" :href="`/brand/${brand.id}/edit`">Edit</Link>
+                                    <Link class="btn btn-danger btn-sm" @click="destroy(`${brand.id}`)" as="button">Delete</Link>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -42,6 +50,16 @@
     import AdminLayout from "../../../Shared/AdminLayout.vue"
     export default {
         layout: AdminLayout,
+        props:{
+            brands: Object
+        },
+        methods: {
+            destroy(id){
+                if (confirm('Are you sure want to delete?')) {
+                    this.$inertia.post(`/brand/${id}/delete`)
+                }
+            }
+        },
     };
 </script>
 
