@@ -40,5 +40,6 @@ Route::post('brand/{id}/update', [BrandController::class, 'update']);
 Route::post('brand/{id}/delete', [BrandController::class, 'destroy']);
 
 //Category  Section
-Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/category/create', [CategoryController::class, 'create']);
+Route::post('/category/store', [CategoryController::class, 'store']);

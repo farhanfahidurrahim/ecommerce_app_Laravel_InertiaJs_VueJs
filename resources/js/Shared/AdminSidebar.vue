@@ -58,7 +58,7 @@
 
             <li class="nav-item">
                 <Link class="nav-link" href="/brand">
-                <span class="menu-title">Brands</span>
+                <span class="menu-title">Brand</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
                 </Link>
             </li>
