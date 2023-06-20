@@ -23,19 +23,17 @@
                         <thead>
                             <tr>
                                 <th> # </th>
-                                <th> Brand Name</th>
-                                <th> Image </th>
+                                <th> Category Name</th>
                                 <th> Action </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="brand in brands" :key="brand.id">
-                                <td>{{ brand.id }}</td>
-                                <td>{{ brand.name }}</td>
-                                <td> <img :src="'/storage/'+brand.image"/> </td>
+                            <tr v-for="category in categories" :key="category.id">
+                                <td>{{ category.id }}</td>
+                                <td>{{ category.name }}</td>
                                 <td>
-                                    <Link class="btn btn-primary btn-sm" :href="`/brand/${brand.id}/edit`">Edit</Link>
-                                    <Link class="btn btn-danger btn-sm" @click="destroy(`${brand.id}`)" as="button">Delete</Link>
+                                    <Link class="btn btn-primary btn-sm" :href="`/category/${category.id}/edit`">Edit</Link>
+                                    <Link class="btn btn-danger btn-sm" @click="destroy(`${category.id}`)" as="button">Delete</Link>
                                 </td>
                             </tr>
                         </tbody>

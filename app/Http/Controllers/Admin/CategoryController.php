@@ -30,4 +30,15 @@ class CategoryController extends Controller
         $model->save();
         return redirect()->route('category.index');
     }
+
+    public function edit($id)
+    {
+        $category=Category::findOrFail($id);
+        return Inertia::render('Admin/Category/Edit', compact('category'));
+    }
+
+    public function update()
+    {
+
+    }
 }

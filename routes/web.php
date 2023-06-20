@@ -43,3 +43,5 @@ Route::post('brand/{id}/delete', [BrandController::class, 'destroy']);
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/category/create', [CategoryController::class, 'create']);
 Route::post('/category/store', [CategoryController::class, 'store']);
+Route::get('/category/{id}/edit', [CategoryController::class, 'edit']);
+Route::post('/category/{id}/update', [CategoryController::class, 'update']);
