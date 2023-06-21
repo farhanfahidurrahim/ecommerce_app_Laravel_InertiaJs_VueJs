@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Inertia\Inertia;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -59,5 +60,26 @@ class ProductController extends Controller
             'sale_price'=>'required',
             'description'=>'required',
         ]);
+        $model=Product::findOrFail($id);
+        if ($request->hasFile('product_image')) {
+            $model->image=$request->file('product_image')->store('images/product','public');
+        }
+        $model->name=$request->product_name;
+        $model->qty=$request->qty;
+        $model->price=$request->price;
+        $model->sale_price=$request->sale_price;
+        $model->description=$request->description;
+        $model->save();
+        return redirect()->route('product.index');
+    }
+
+    public function destroy($id)
+    {
+        $model=Product::findOrFail($id);
+        if (!empty($model->image)) {
+            Storage::delete('public/'.$model->image);
+        }
+        $model->delete();
+        return redirect()->back();
     }
 }
