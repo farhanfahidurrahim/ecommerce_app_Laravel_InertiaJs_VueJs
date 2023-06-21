@@ -33,13 +33,19 @@
                             </tr>
                         </thead>
                         <tbody>
-
-
-                                <!-- <td>
-                                    <Link class="btn btn-primary btn-sm" :href="`/category/${category.id}/edit`">Edit</Link>
-                                    <Link class="btn btn-danger btn-sm" @click="destroy(`${category.id}`)" as="button">Delete</Link>
-                                </td> -->
-
+                            <tr v-for="product in products" :key="product.id">
+                                <td>{{ product.id }}</td>
+                                <td>{{ product.name }}</td>
+                                <td> <img :src="'/storage/'+product.image"> </td>
+                                <td>{{ product.qty }}</td>
+                                <td>{{ product.price }}</td>
+                                <td>{{ product.sale_price }}</td>
+                                <td>{{ product.description }}</td>
+                                <td>
+                                    <Link class="btn btn-primary btn-sm" :href="`/product/${product.id}/edit`">Edit</Link>
+                                    <Link class="btn btn-danger btn-sm" @click="destroy(`${product.id}`)" as="button">Delete</Link>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -50,7 +56,17 @@
 <script>
     import AdminLayout from '../../../Shared/AdminLayout.vue';
     export default {
-        layout: AdminLayout
+        layout: AdminLayout,
+        props:{
+            products: Object
+        },
+        methods:{
+            destroy(id){
+                if (confirm('Are you sure want to delete?')) {
+                    this.$inertia.post(`product/${id}/delete`)
+                }
+            }
+        }
     }
 </script>
 <script setup>

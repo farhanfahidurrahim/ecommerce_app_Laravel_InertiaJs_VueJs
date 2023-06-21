@@ -6,12 +6,12 @@
                     <span class="page-title-icon bg-gradient-primary text-white me-2">
                         <i class="mdi mdi-home"></i>
                     </span>
-                    Create Product
+                    Edit Product
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item active" aria-current="page">
-                            <span></span>Product/Create
+                            <span></span>Product/Edit
                             <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
                         </li>
                     </ul>
@@ -22,11 +22,12 @@
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <!-- <h4 class="card-title">Default form</h4> <p class="card-description">Basic form layout</p> -->
-                            <form @submit.prevent="submit" enctype="multipart/form-data">
+                            <!-- <h4 class="card-title">Default form</h4>
+                            <p class="card-description">Basic form layout</p> -->
+                            <form class="forms-sample" @submit.prevent="submit" accept="multipart/form-data">
                                 <div class="form-group">
                                     <label for="sl-position">Product Name</label>
-                                    <input type="text" v-model="form.product_name" class="form-control" placeholder="Enter Name">
+                                    <input type="text" v-model="form.product_name" class="form-control" id="sl-position"/>
                                     <div v-if="errors.product_name" style="color: red;">{{ errors.product_name }}</div>
                                 </div>
                                 <div class="form-group">
@@ -58,7 +59,7 @@
                                     <div v-if="errors.description" style="color: red;">{{ errors.description }}</div>
                                 </div>
                                 <button type="submit" :disabled="form.processing" class="btn btn-gradient-primary me-2">
-                                    Submit
+                                    Update
                                 </button>
                                 <Link href="/product" class="btn btn-light">Back</Link>
                             </form>
@@ -70,28 +71,51 @@
     </div>
 </template>
 <script>
-import AdminLayout from '../../../Shared/AdminLayout.vue';
+import AdminLayout from "../../../Shared/AdminLayout.vue";
 export default {
     layout: AdminLayout,
     props: {
-        errors: Object
-    }
-}
+        errors: Object,
+        product: Object
+    },
+    data() {
+        return {
+            form: this.$inertia.form({
+                product_name: this.product.name ?? null,
+                product_image: null,
+                qty: this.product.qty ?? null,
+                price: this.product.price ?? null,
+                sale_price: this.product.sale_price ?? null,
+                description: this.product.description ?? null,
+            }),
+        };
+    },
+    methods: {
+        submit() {
+            this.form.post(`/product/${this.product.id}/update`);
+        },
+    },
+};
 </script>
+
 <script setup>
+import { Link } from '@inertiajs/vue3'
+</script>
+
+
+<!-- <script setup>
+import AdminLayout from "../../../Shared/AdminLayout.vue";
 import { Link, router } from '@inertiajs/vue3'
 import { reactive} from 'vue'
 
+defineOptions({ layout: AdminLayout })
+defineProps({ product: Object,});
+
 const form = reactive({
-    product_name:null,
-    product_image:null,
-    qty:null,
-    price:null,
-    sale_price:null,
-    description:null,
+    name: null,
 })
 
-function submit(){
-    router.post('/product/store',form)
+function submit() {
+    router.post(`/product/${this.product.id}/update`, form);
 }
-</script>
+</script> -->

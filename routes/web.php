@@ -49,6 +49,9 @@ Route::post('/category/{id}/update', [CategoryController::class, 'update']);
 Route::post('/category/{id}/delete', [CategoryController::class, 'destroy']);
 
 //Product  Section
-Route::get('/product', [ProductController::class, 'index']);
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 Route::get('/product/create', [ProductController::class, 'create']);
 Route::post('/product/store', [ProductController::class, 'store']);
+Route::get('/product/{id}/edit', [ProductController::class, 'edit']);
+Route::post('/product/{id}/update', [ProductController::class, 'update']);
+Route::post('/product/{id}/delete', [ProductController::class, 'destroy']);
