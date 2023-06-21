@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +47,8 @@ Route::post('/category/store', [CategoryController::class, 'store']);
 Route::get('/category/{id}/edit', [CategoryController::class, 'edit']);
 Route::post('/category/{id}/update', [CategoryController::class, 'update']);
 Route::post('/category/{id}/delete', [CategoryController::class, 'destroy']);
+
+//Product  Section
+Route::get('/product', [ProductController::class, 'index']);
+Route::get('/product/create', [ProductController::class, 'create']);
+Route::post('/product/store', [ProductController::class, 'store']);
