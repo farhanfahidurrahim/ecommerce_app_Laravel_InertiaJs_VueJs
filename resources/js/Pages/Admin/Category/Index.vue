@@ -49,6 +49,13 @@
         layout: AdminLayout,
         props:{
             categories: Object
+        },
+        methods:{
+            destroy(id){
+                if (confirm('Are you sure want to delete?')) {
+                    this.$inertia.post(`/category/${id}/delete`)
+                }
+            }
         }
     }
 </script>

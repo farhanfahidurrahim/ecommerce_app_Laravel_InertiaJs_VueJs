@@ -37,8 +37,22 @@ class CategoryController extends Controller
         return Inertia::render('Admin/Category/Edit', compact('category'));
     }
 
-    public function update()
+    public function update(Request $request,$id)
     {
+        $request->validate([
+            'category_name'=>'required|string|max:25',
+        ]);
+        $model=Category::findOrFail($id);
+        $model->name=$request->category_name;
+        $model->save();
 
+        return redirect()->route('category.index');
+    }
+
+    public function destroy($id)
+    {
+        $model=Category::findOrFail($id);
+        $model->delete();
+        return redirect()->route('category.index');
     }
 }
