@@ -17,6 +17,6 @@ class FrontendController extends Controller
 
     public function shop()
     {
-
+        return Inertia::render('Frontend/Shop');
     }
 }
