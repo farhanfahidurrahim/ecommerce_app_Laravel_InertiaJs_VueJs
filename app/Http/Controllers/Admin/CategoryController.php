@@ -24,8 +24,12 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_name'=>'required|string|max:25',
+            'category_image'=>'required|image|mimes:jpg,jpeg,png',
         ]);
         $model=new Category();
+        // if ($request->category_image) {
+        //     $model->image
+        // }
         $model->name=$request->category_name;
         $model->save();
         return redirect()->route('category.index');

@@ -31,7 +31,14 @@
                                         placeholder="Enter Name" />
                                     <div v-if="errors.category_name" style="color: red;">{{ errors.category_name }}</div>
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="sl-position">Category Image</label>
+                                    <input type="file" @input="form.category_image = $event.target.files[0]" class="form-control" accept="image/*"/>
+                                    <progress v-if="form.progress" :value="form.progress.percentage" max="100">
+                                        {{ form.progress.percentage }}%
+                                    </progress>
+                                    <div v-if="errors.category_image" style="color: red;">{{ errors.category_image }}</div>
+                                </div>
                                 <button type="submit" :disabled="form.processing" class="btn btn-gradient-primary me-2">
                                     Submit
                                 </button>
@@ -58,7 +65,8 @@ import { Link, router } from '@inertiajs/vue3';
 import { reactive } from 'vue';
 
 const form = reactive({
-    category_name: null
+    category_name: null,
+    category_image: null
 })
 
 function submit() {
