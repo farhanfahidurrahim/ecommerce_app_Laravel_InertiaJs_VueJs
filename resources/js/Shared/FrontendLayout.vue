@@ -27,13 +27,6 @@ export default {
     components: { FrontendTopbar, FrontendNavbar, FrontendFooter },
 }
 </script>
-<!-- <script setup>
-import FrontendTopbar from './Frontend/FrontendTopbar.vue';
-import FrontendNavbar from './Frontend/FrontendNavbar.vue';
-import FrontendFooter from './Frontend/FrontendFooter.vue';
-
-defineOptions({ components: FrontendTopbar, FrontendNavbar, FrontendFooter })
-</script> -->
 <style>
 
 </style>
