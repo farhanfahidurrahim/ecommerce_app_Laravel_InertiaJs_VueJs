@@ -17,11 +17,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', function () {
-//     return inertia(component:'Welcome');
-// });
 
-Route::redirect('/', '/dashboard');
+//---------- Frontend Section ---------
+Route::get('/', function () {
+    return inertia('Frontend/Root');
+});
+
+// Route::redirect('/', '/dashboard');
+//---------- Admin Section ---------
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
 //Slider  Section

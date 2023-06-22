@@ -22,8 +22,8 @@
   </body>
 </template>
 <script>
-import AdminSidebarVue from './AdminSidebar.vue';
-import AdminNavVue from './AdminNavbar.vue';
+import AdminSidebarVue from './Admin/AdminSidebar.vue';
+import AdminNavVue from './Admin/AdminNavbar.vue';
 
 export default {
     components: { AdminSidebarVue, AdminNavVue },

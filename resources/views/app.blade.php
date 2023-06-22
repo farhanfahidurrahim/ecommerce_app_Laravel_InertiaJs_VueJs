@@ -12,6 +12,16 @@
     <link rel="stylesheet" href="{{ asset('admin_assets') }}/css/style.css">
     <link rel="shortcut icon" href="{{ asset('admin_assets') }}/images/favicon.ico" />
     {{-- End Admin Template Styles --}}
+
+    <!-- Frontend -->
+    <link href="img/favicon.ico" rel="icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ asset('fronted_assets') }}/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="{{ asset('fronted_assets') }}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{{ asset('fronted_assets') }}/css/style.css" rel="stylesheet">
+
     @vite('resources/js/app.js')
     @inertiaHead
   </head>
@@ -27,9 +37,15 @@
     <script src="{{ asset('admin_assets') }}/js/dashboard.js"></script>
     <script src="{{ asset('admin_assets') }}/js/todolist.js"></script>
     {{-- End Admin Template Scripts --}}
-    <script>
-        window.csrfToken = "{{ csrf_token() }}";
-      </script>
+
+    <!-- Fronted JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('fronted_assets') }}/lib/easing/easing.min.js"></script>
+    <script src="{{ asset('fronted_assets') }}/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="{{ asset('fronted_assets') }}/mail/jqBootstrapValidation.min.js"></script>
+    <script src="{{ asset('fronted_assets') }}/mail/contact.js"></script>
+    <script src="{{ asset('fronted_assets') }}/js/main.js"></script>
   </body>
 </html>
 
