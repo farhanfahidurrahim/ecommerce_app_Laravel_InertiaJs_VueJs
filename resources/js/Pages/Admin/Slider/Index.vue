@@ -37,7 +37,7 @@
                             <tr v-for="slider in sliders" :key="slider.id">
                                 <td> {{ slider.id }} </td>
                                 <td> {{ slider.title }} </td>
-                                <td> {{ slider.description }} </td>
+                                <td>{{ slider.description.split(' ').slice(0, 10).join(' ') }}</td>
                                 <td> <img :src="'/storage/'+slider.image"/> </td>
                                 <td> {{ slider.btn_name }} </td>
                                 <td> {{ slider.btn_link }} </td>

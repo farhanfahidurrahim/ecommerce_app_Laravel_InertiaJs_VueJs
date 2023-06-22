@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,13 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//---------- Frontend Section ---------
-Route::get('/', function () {
-    return inertia('Frontend/Root');
-});
+//=========>>> Frontend Section <<<=========
+// Route::get('/', function () { return inertia('Frontend/Root'); });
+Route::get('/', [FrontendController::class, 'index']);
+Route::get('/shop', [FrontendController::class, 'shop']);
 
+//=========>>> Admin Section <<<=========
 // Route::redirect('/', '/dashboard');
-//---------- Admin Section ---------
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
 //Slider  Section
