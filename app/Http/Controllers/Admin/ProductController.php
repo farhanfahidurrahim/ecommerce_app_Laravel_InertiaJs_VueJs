@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -18,7 +19,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        return Inertia::render('Admin/Product/Create');
+        $categories=Category::all();
+        return Inertia::render('Admin/Product/Create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -26,6 +28,7 @@ class ProductController extends Controller
         $request->validate([
             'product_name'=>'required|string|max:50',
             'product_image'=>'required|image|mimes:png,jpg,jpeg',
+            'category_id'=>'required',
             'qty'=>'required|integer|max:9000',
             'price'=>'required',
             'sale_price'=>'required',
@@ -36,6 +39,7 @@ class ProductController extends Controller
             $model->image=$request->file('product_image')->store('images/product','public');
         }
         $model->name=$request->product_name;
+        $model->category_id=$request->category_id;
         $model->qty=$request->qty;
         $model->price=$request->price;
         $model->sale_price=$request->sale_price;

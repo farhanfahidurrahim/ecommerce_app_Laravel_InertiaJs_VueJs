@@ -38,6 +38,14 @@
                                     <div v-if="errors.product_image" style="color: red;">{{ errors.product_image }}</div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="sl-position">Product Category</label>
+                                    <select v-model="form.category_id" class="form-control">
+                                        <option disabled>Choose Category</option>
+                                        <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
+                                    </select>
+                                    <div v-if="errors.category_id" style="color: red;">{{ errors.category_id }}</div>
+                                </div>
+                                <div class="form-group">
                                     <label for="sl-position">Product Quantity</label>
                                     <input type="number" v-model="form.qty" class="form-control" placeholder="Enter Quantity">
                                     <div v-if="errors.qty" style="color: red;">{{ errors.qty }}</div>
@@ -74,7 +82,8 @@ import AdminLayout from '../../../Shared/AdminLayout.vue';
 export default {
     layout: AdminLayout,
     props: {
-        errors: Object
+        errors: Object,
+        categories: Object
     }
 }
 </script>
@@ -85,6 +94,7 @@ import { reactive} from 'vue'
 const form = reactive({
     product_name:null,
     product_image:null,
+    category_id:null,
     qty:null,
     price:null,
     sale_price:null,
