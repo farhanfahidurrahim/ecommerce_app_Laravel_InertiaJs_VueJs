@@ -6,12 +6,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
     <script src="{{ mix('/js/app.js') }}" defer></script>
-    {{-- Admin Template Styles --}}
+
+    {{-- Admin Template --}}
     <link rel="stylesheet" href="{{ asset('admin_assets') }}/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{ asset('admin_assets') }}/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="{{ asset('admin_assets') }}/css/style.css">
     <link rel="shortcut icon" href="{{ asset('admin_assets') }}/images/favicon.ico" />
-    {{-- End Admin Template Styles --}}
+    {{-- End Admin Template --}}
 
     <!-- Frontend -->
     <link href="img/favicon.ico" rel="icon">

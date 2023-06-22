@@ -22,19 +22,32 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th> # </th>
-                                <th> Slider Image</th>
-                                <th> Position </th>
-                                <th> Action </th>
+                                <th>#</th>
+                                <th>Slider Title</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Btn Name</th>
+                                <th>Btn Link</th>
+                                <th>Position</th>
+                                <th>Status</th>
+                                <th>Action </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="slider in sliders" :key="slider.id">
                                 <td> {{ slider.id }} </td>
+                                <td> {{ slider.title }} </td>
+                                <td> {{ slider.description }} </td>
                                 <td> <img :src="'/storage/'+slider.image"/> </td>
+                                <td> {{ slider.btn_name }} </td>
+                                <td> {{ slider.btn_link }} </td>
                                 <td> {{ slider.position }} </td>
                                 <td>
-                                    <Link class="btn btn-primary btn-sm" :href="`/slider/${slider.id}/edit`">Edit</Link>
+                                    <span v-if="slider.status==true" :class="'badge badge-success'">Active</span>
+                                    <span v-else :class="'badge badge-danger'">Block</span>
+                                </td>
+                                <td>
+                                    <Link class="btn btn-primary btn-sm" :href="`/slider/${slider.id}/edit`">Edit</Link> |
                                     <Link class="btn btn-danger btn-sm" @click="destroy(`${slider.id}`)" as="button">Delete</Link>
                                 </td>
                             </tr>
