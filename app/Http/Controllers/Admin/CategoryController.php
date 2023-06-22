@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class CategoryController extends Controller
@@ -27,9 +28,9 @@ class CategoryController extends Controller
             'category_image'=>'required|image|mimes:jpg,jpeg,png',
         ]);
         $model=new Category();
-        // if ($request->category_image) {
-        //     $model->image
-        // }
+        if ($request->category_image) {
+            $model->image=$request->file('category_image')->store('images/category','public');
+        }
         $model->name=$request->category_name;
         $model->save();
         return redirect()->route('category.index');
@@ -56,6 +57,9 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $model=Category::findOrFail($id);
+        if (!empty($model->image)) {
+            Storage::delete("public/".$model->image);
+        }
         $model->delete();
         return redirect()->route('category.index');
     }

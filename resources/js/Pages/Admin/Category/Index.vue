@@ -24,6 +24,7 @@
                             <tr>
                                 <th> # </th>
                                 <th> Category Name</th>
+                                <th> Category Image</th>
                                 <th> Action </th>
                             </tr>
                         </thead>
@@ -31,8 +32,9 @@
                             <tr v-for="category in categories" :key="category.id">
                                 <td>{{ category.id }}</td>
                                 <td>{{ category.name }}</td>
+                                <td><img :src="'/storage/'+category.image"/></td>
                                 <td>
-                                    <Link class="btn btn-primary btn-sm" :href="`/category/${category.id}/edit`">Edit</Link>
+                                    <Link class="btn btn-primary btn-sm" :href="`/category/${category.id}/edit`">Edit</Link> |
                                     <Link class="btn btn-danger btn-sm" @click="destroy(`${category.id}`)" as="button">Delete</Link>
                                 </td>
                             </tr>
