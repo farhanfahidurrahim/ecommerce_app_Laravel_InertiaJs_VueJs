@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//=========>>> Auth Section <<<=========
+Route::get('/register', [AuthController::class, 'registerIndex'])->name('register');
+Route::post('/register-store', [AuthController::class, 'registerStore'])->name('register.store');
 
 //=========>>> Frontend Section <<<=========
 // Route::get('/', function () { return inertia('Frontend/Root'); });
