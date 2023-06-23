@@ -20,6 +20,6 @@ class AuthController extends Controller
         ]);
         $data['password'] = bcrypt($data['password']);
         User::create($data);
-        return redirect()->back()->withSuccess("Done!");
+        return redirect()->back()->withSuccess("Registration Successfully... Please Login!");
     }
 }
