@@ -51,4 +51,14 @@ class CartController extends Controller
         $cartSessions=session()->get('cart');
         return Inertia::render('Frontend/Cart', compact('cartSessions'));
     }
+
+    public function removeCart($product_id)
+    {
+        $cart=session()->get('cart');
+        if (isset($cart[$product_id])) {
+            unset($cart[$product_id]);
+            session()->put('cart',$cart);
+            return redirect()->route('cart');
+        };
+    }
 }

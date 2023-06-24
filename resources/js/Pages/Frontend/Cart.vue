@@ -48,7 +48,7 @@
                                 </div>
                             </td>
                             <td class="align-middle">$150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                            <td class="align-middle"><Link :href="`/remove-from-cart/${cartSession.id}`" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></Link></td>
                         </tr>
                     </tbody>
                 </table>
@@ -96,6 +96,9 @@ export default {
         cartSessions: Object
     }
 }
+</script>
+<script setup>
+import { Link } from '@inertiajs/vue3';
 </script>
 <style lang="">
 
