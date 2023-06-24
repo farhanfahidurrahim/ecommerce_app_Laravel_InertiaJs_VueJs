@@ -29,9 +29,9 @@
                         </tr>
                     </thead>
                     <tbody class="align-middle">
-                        <tr>
-                            <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;"> Product Name</td>
-                            <td class="align-middle">$150</td>
+                        <tr v-for="cartSession in cartSessions" :key="cartSession.id">
+                            <td class="align-middle"><img :src="'storage/'+cartSession.image" alt="" style="width: 50px;">{{ cartSession.name }}</td>
+                            <td class="align-middle">${{ cartSession.sale_price }}</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">
@@ -91,7 +91,10 @@
 <script>
 import FrontendLayout from '../../Shared/FrontendLayout.vue';
 export default {
-    layout: FrontendLayout
+    layout: FrontendLayout,
+    props: {
+        cartSessions: Object
+    }
 }
 </script>
 <style lang="">

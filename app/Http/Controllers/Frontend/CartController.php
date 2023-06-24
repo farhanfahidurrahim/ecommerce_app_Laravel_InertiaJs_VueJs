@@ -9,11 +9,6 @@ use Inertia\Inertia;
 
 class CartController extends Controller
 {
-    public function cart ()
-    {
-        return Inertia::render('Frontend/Cart');
-    }
-
     public function addCart($product_id)
     {
         //check product exist!!
@@ -26,6 +21,7 @@ class CartController extends Controller
         if (!$cart) {
             $cart=[
                 $product->id=>[
+                    'id'=>$product->id,
                     'name'=>$product->name,
                     'image'=>$product->image,
                     'qty'=>$product->qty,
@@ -35,5 +31,11 @@ class CartController extends Controller
             session()->put('cart',$cart);
             return redirect()->route('cart');
         }
+    }
+
+    public function cart()
+    {
+        $cartSessions=session()->get('cart');
+        return Inertia::render('Frontend/Cart', compact('cartSessions'));
     }
 }
