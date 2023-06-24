@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,10 +34,13 @@ Route::post('/login-store', [AuthController::class, 'loginStore'])->name('login.
 
 
 //=========>>> Frontend Section <<<=========
-// Route::get('/', function () { return inertia('Frontend/Root'); });
+// Route::get('/', function () { return inertia('Frontend/Index'); });
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/shop', [FrontendController::class, 'shop']);
 Route::get('/shop-product-detail', [FrontendController::class, 'shopProductDetail']);
+
+//Cart Section
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 
 //=========>>> Admin Section <<<=========
 // Route::redirect('/', '/dashboard');
