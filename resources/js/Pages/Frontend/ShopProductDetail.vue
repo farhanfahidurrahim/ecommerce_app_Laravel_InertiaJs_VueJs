@@ -43,7 +43,7 @@
 
             <div class="col-lg-7 h-auto mb-30">
                 <div class="h-100 bg-light p-30">
-                    <h3>Product Name Goes Here</h3>
+                    <h3>{{ product.name }}</h3>
                     <div class="d-flex mb-3">
                         <div class="text-primary mr-2">
                             <small class="fas fa-star"></small>
@@ -56,9 +56,7 @@
                     </div>
                     <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
                     <p class="mb-4">
-                        Volup erat ipsum diam elitr rebum et dolor. Est nonumy
-                        elitr erat diam stet sit clita ea. Sanc ipsum et, labore
-                        clita lorem magna duo dolor no sea Nonumy
+                        {{ product.description }}
                     </p>
                     <div class="d-flex mb-3">
                         <strong class="text-dark mr-3">Sizes:</strong>
@@ -793,6 +791,9 @@
 import FrontendLayout from "../../Shared/FrontendLayout.vue";
 export default {
     layout: FrontendLayout,
+    props: {
+        product: Object,
+    }
 };
 </script>
 <style>

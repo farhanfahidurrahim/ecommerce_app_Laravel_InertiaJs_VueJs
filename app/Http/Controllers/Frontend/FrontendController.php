@@ -25,8 +25,9 @@ class FrontendController extends Controller
         return Inertia::render('Frontend/Shop');
     }
 
-    public function shopProductDetail()
+    public function shopProductDetail(Request $request)
     {
-        return Inertia::render('Frontend/ShopProductDetail');
+        $product=Product::findOrFail(request()->product_id);
+        return Inertia::render('Frontend/ShopProductDetail', compact('product'));
     }
 }
