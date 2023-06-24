@@ -31,6 +31,19 @@ class CartController extends Controller
             session()->put('cart',$cart);
             return redirect()->route('cart');
         }
+
+        //another product add to cart!!
+        if (isset($cart)) {
+            $cart[$product->id]=[
+                'id'=>$product->id,
+                'name'=>$product->name,
+                'image'=>$product->image,
+                'qty'=>$product->qty,
+                'sale_price'=>$product->sale_price,
+            ];
+            session()->put('cart',$cart);
+            return redirect()->route('cart');
+        }
     }
 
     public function cart()
