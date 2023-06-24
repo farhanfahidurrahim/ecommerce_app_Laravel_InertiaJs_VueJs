@@ -21,8 +21,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 //=========>>> Auth Section <<<=========
-Route::get('/register', [AuthController::class, 'registerIndex'])->name('register');
+Route::middleware('guest')->group(function(){
+    Route::get('/register', [AuthController::class, 'registerIndex'])->name('register');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+});
+Route::middleware('auth')->group(function(){
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 Route::post('/register-store', [AuthController::class, 'registerStore'])->name('register.store');
+Route::post('/login-store', [AuthController::class, 'loginStore'])->name('login.store');
+
 
 //=========>>> Frontend Section <<<=========
 // Route::get('/', function () { return inertia('Frontend/Root'); });
