@@ -167,7 +167,7 @@
     <div class="container-fluid pt-5 pb-3">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Products</span></h2>
         <div class="row px-xl-5">
-            <div v-for="recentProduct in recentProducts" class="col-lg-3 col-md-4 col-sm-6 pb-1">
+            <div v-for="recentProduct in recentProducts" :key="recentProduct.id" class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" :src="'/storage/'+recentProduct.image" alt="">
@@ -179,7 +179,7 @@
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">{{ recentProduct.name }}</a>
+                        <Link class="h6 text-decoration-none text-truncate" href="/shop-product-detail" :data="{product_id:recentProduct.id}">{{ recentProduct.name }}</Link>
                         <div class="d-flex align-items-center justify-content-center mt-2">
                             <h5>${{ recentProduct.sale_price }}</h5><h6 class="text-muted ml-2"><del>${{ recentProduct.price }}</del></h6>
                         </div>

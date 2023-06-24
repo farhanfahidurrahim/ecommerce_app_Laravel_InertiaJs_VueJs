@@ -20,16 +20,7 @@
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner bg-light">
                         <div class="carousel-item active">
-                            <img class="w-100 h-100" src="frontend_assets/img/product-1.jpg" alt="Image" />
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="frontend_assets/img/product-2.jpg" alt="Image" />
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="frontend_assets/img/product-3.jpg" alt="Image" />
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="frontend_assets/img/product-4.jpg" alt="Image" />
+                            <img class="w-100 h-100" :src="'storage/'+product.image" alt="Image" />
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
@@ -54,11 +45,11 @@
                         </div>
                         <small class="pt-1">(99 Reviews)</small>
                     </div>
-                    <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
+                    <h3 class="font-weight-semi-bold mb-4">${{ product.sale_price }}</h3>
                     <p class="mb-4">
                         {{ product.description }}
                     </p>
-                    <div class="d-flex mb-3">
+                    <!-- <div class="d-flex mb-3">
                         <strong class="text-dark mr-3">Sizes:</strong>
                         <form>
                             <div class="custom-control custom-radio custom-control-inline">
@@ -82,8 +73,8 @@
                                 <label class="custom-control-label" for="size-5">XL</label>
                             </div>
                         </form>
-                    </div>
-                    <div class="d-flex mb-4">
+                    </div> -->
+                    <!-- <div class="d-flex mb-4">
                         <strong class="text-dark mr-3">Colors:</strong>
                         <form>
                             <div class="custom-control custom-radio custom-control-inline">
@@ -107,7 +98,7 @@
                                 <label class="custom-control-label" for="color-5">Green</label>
                             </div>
                         </form>
-                    </div>
+                    </div> -->
                     <div class="d-flex align-items-center mb-4 pt-2">
                         <div class="input-group quantity mr-3" style="width: 130px">
                             <div class="input-group-btn">
@@ -122,9 +113,9 @@
                                 </button>
                             </div>
                         </div>
-                        <button class="btn btn-primary px-3">
+                        <Link :href="`/add-to-cart/${product.id}`" class="btn btn-primary px-3">
                             <i class="fa fa-shopping-cart mr-1"></i> Add To Cart
-                        </button>
+                        </Link>
                     </div>
                     <div class="d-flex pt-2">
                         <strong class="text-dark mr-2">Share on:</strong>
@@ -795,6 +786,9 @@ export default {
         product: Object,
     }
 };
+</script>
+<script setup>
+import { Link } from "@inertiajs/vue3";
 </script>
 <style>
 </style>

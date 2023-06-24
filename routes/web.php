@@ -41,7 +41,7 @@ Route::get('/shop-product-detail', [FrontendController::class, 'shopProductDetai
 
 //Cart Section
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
-Route::get('/add-cart/{product_id}', [CartController::class, 'addCart'])->name('add.cart');
+Route::get('/add-to-cart/{product_id}', [CartController::class, 'addCart']);
 
 //=========>>> Admin Section <<<=========
 // Route::redirect('/', '/dashboard');
