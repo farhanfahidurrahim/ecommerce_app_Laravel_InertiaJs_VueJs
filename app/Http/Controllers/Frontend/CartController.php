@@ -24,10 +24,17 @@ class CartController extends Controller
                     'id'=>$product->id,
                     'name'=>$product->name,
                     'image'=>$product->image,
-                    'qty'=>$product->qty,
-                    'sale_price'=>$product->sale_price,
+                    'qty'=>1,
+                    'price'=>$product->sale_price,
                 ]
             ];
+            session()->put('cart',$cart);
+            return redirect()->route('cart');
+        }
+
+        // if again want to same product add to cart
+        if (isset($cart[$product_id])) {
+            $cart[$product_id]['qty']++;
             session()->put('cart',$cart);
             return redirect()->route('cart');
         }
@@ -38,12 +45,13 @@ class CartController extends Controller
                 'id'=>$product->id,
                 'name'=>$product->name,
                 'image'=>$product->image,
-                'qty'=>$product->qty,
-                'sale_price'=>$product->sale_price,
+                'qty'=>1,
+                'price'=>$product->sale_price,
             ];
             session()->put('cart',$cart);
             return redirect()->route('cart');
         }
+
     }
 
     public function cart()
@@ -61,4 +69,22 @@ class CartController extends Controller
             return redirect()->route('cart');
         };
     }
+
+    public function upsertQuantity()
+    {
+
+    }
+
+    //--------------- Checkout & Order ----------------
+
+    public function checkout()
+    {
+        return Inertia::render('Frontend/Checkout');
+    }
+
+    public function orderPlace()
+    {
+        return Inertia::render('Frontend/OrderPlace');
+    }
+
 }

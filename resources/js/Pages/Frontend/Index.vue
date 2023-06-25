@@ -205,7 +205,7 @@
             <div class="col">
                 <div class="owl-carousel vendor-carousel">
                     <div class="bg-light p-4">
-                        <img src="img/vendor-1.jpg" alt="">
+                        <img src="frontend_assets/img/vendor-1.jpg" alt="">
                     </div>
                     <div class="bg-light p-4">
                         <img src="img/vendor-2.jpg" alt="">

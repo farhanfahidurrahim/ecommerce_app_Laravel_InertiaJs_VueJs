@@ -43,6 +43,11 @@ Route::get('/shop-product-detail', [FrontendController::class, 'shopProductDetai
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::get('/add-to-cart/{product_id}', [CartController::class, 'addCart']);
 Route::get('/remove-from-cart/{product_id}', [CartController::class, 'removeCart']);
+Route::get('/upsert-product-quantity/{product_id}', [CartController::class, 'upsertQuantity'])->name('upsertQuantity');
+//Checkout
+Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::get('/order-place', [CartController::class, 'orderPlace'])->name('order.place');
+
 
 //=========>>> Admin Section <<<=========
 // Route::redirect('/', '/dashboard');

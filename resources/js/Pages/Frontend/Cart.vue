@@ -23,6 +23,7 @@
                         <tr>
                             <th>Products</th>
                             <th>Price</th>
+                            <th>Qty</th>
                             <th>Quantity</th>
                             <th>Total</th>
                             <th>Remove</th>
@@ -31,20 +32,24 @@
                     <tbody class="align-middle">
                         <tr v-for="cartSession in cartSessions" :key="cartSession.id">
                             <td class="align-middle"><img :src="'storage/'+cartSession.image" alt="" style="width: 50px;">{{ cartSession.name }}</td>
-                            <td class="align-middle">${{ cartSession.sale_price }}</td>
+                            <td class="align-middle">${{ cartSession.price }}</td>
+                            <td class="align-middle">{{ cartSession.qty }}</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
+                                        <button id="decrease" @click="decreaseValue" class="btn btn-sm btn-primary btn-minus" >
                                         <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
+                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" id="number" :value="cartSession.qty">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
+                                        <button id="increase" @click="increaseValue" class="btn btn-sm btn-primary btn-plus">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
+                                    <button @click="updateQuantity(cartSession.id)" class="btn btn-sm btn-danger" style="text-align: center;">
+                                        Update
+                                    </button>
                                 </div>
                             </td>
                             <td class="align-middle">$150</td>
@@ -79,7 +84,7 @@
                             <h5>Total</h5>
                             <h5>$160</h5>
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                        <Link href="/checkout" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</Link>
                     </div>
                 </div>
             </div>
@@ -94,6 +99,24 @@ export default {
     layout: FrontendLayout,
     props: {
         cartSessions: Object
+    },
+
+    data() {
+        return {
+            form:{
+                product_id: null,
+                qty: null,
+            }
+        }
+    },
+
+    methods: {
+        increaseValue(){
+            var value = parseInt(document.getElementById('number').value,10);
+            value=isNaN(value) ? 0 : value;
+            value++;
+            document.getElementById('number').value=value;
+        },
     }
 }
 </script>
