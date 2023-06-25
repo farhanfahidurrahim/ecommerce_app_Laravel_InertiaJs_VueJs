@@ -117,11 +117,27 @@ export default {
             value++;
             document.getElementById('number').value=value;
         },
+        decreaseValue(){
+            var value = parseInt(document.getElementById('number').value,10);
+            value=isNaN(value) ? 0 : value;
+            value<1 ? value=1:'';
+            if (value>1) {
+                value--;
+            }
+            document.getElementById('number').value=value;
+        },
+        updateQuantity(product_id){
+            var value = parseInt(document.getElementById('number').value);
+            this.form.qty = value;
+            this.form.product_id = product_id;
+            // Inertia.post('/upsert-product-quantity',this.form);
+            router.post('/upsert-product-quantity',this.form)
+        }
     }
 }
 </script>
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
 </script>
 <style lang="">
 

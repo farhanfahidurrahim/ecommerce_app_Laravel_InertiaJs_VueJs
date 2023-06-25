@@ -70,9 +70,14 @@ class CartController extends Controller
         };
     }
 
-    public function upsertQuantity()
+    public function upsertQuantity(Request $request)
     {
-
+        $cart=session()->get('cart');
+        if (isset($cart[$request->product_id])) {
+            $cart[$request->product_id]['qty']=$request->qty;
+            session()->put('cart',$cart);
+            return redirect()->route('cart');
+        };
     }
 
     //--------------- Checkout & Order ----------------
