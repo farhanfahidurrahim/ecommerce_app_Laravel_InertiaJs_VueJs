@@ -26,6 +26,7 @@ class CartController extends Controller
                     'image'=>$product->image,
                     'qty'=>1,
                     'price'=>$product->sale_price,
+                    'total' => $product->sale_price,
                 ]
             ];
             session()->put('cart',$cart);
@@ -35,6 +36,7 @@ class CartController extends Controller
         // if again want to same product add to cart
         if (isset($cart[$product_id])) {
             $cart[$product_id]['qty']++;
+            $cart[$product_id]['total'] = $cart[$product_id]['qty'] * $cart[$product_id]['price'];
             session()->put('cart',$cart);
             return redirect()->route('cart');
         }
@@ -57,7 +59,11 @@ class CartController extends Controller
     public function cart()
     {
         $cartSessions=session()->get('cart');
-        return Inertia::render('Frontend/Cart', compact('cartSessions'));
+        $cartSubTotal=0;
+        foreach($cartSessions as $cart){
+            $cartSubTotal +=$cart['total'];
+        }
+        return Inertia::render('Frontend/Cart', compact('cartSessions','cartSubTotal'));
     }
 
     public function removeCart($product_id)
@@ -84,11 +90,17 @@ class CartController extends Controller
 
     public function checkout()
     {
-        return Inertia::render('Frontend/Checkout');
+        $cartSessions=session()->get('cart');
+        $cartSubTotal=0;
+        foreach($cartSessions as $cart){
+            $cartSubTotal +=$cart['total'];
+        }
+        return Inertia::render('Frontend/Checkout', compact('cartSessions','cartSubTotal'));
     }
 
-    public function orderPlace()
+    public function orderPlace(Request $request)
     {
+        return $request->all();
         return Inertia::render('Frontend/OrderPlace');
     }
 

@@ -45,8 +45,10 @@ Route::get('/add-to-cart/{product_id}', [CartController::class, 'addCart']);
 Route::get('/remove-from-cart/{product_id}', [CartController::class, 'removeCart']);
 Route::post('/upsert-product-quantity', [CartController::class, 'upsertQuantity'])->name('upsertQuantity');
 //Checkout
-Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
-Route::get('/order-place', [CartController::class, 'orderPlace'])->name('order.place');
+Route::middleware('auth')->group(function(){
+    Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
+    Route::post('/order-place', [CartController::class, 'orderPlace'])->name('order.place');
+});
 
 
 //=========>>> Admin Section <<<=========

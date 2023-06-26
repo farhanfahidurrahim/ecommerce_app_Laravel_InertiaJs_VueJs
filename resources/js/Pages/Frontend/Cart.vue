@@ -52,7 +52,7 @@
                                     </button>
                                 </div>
                             </td>
-                            <td class="align-middle">$150</td>
+                            <td class="align-middle">${{ cartSession.total }}</td>
                             <td class="align-middle"><Link :href="`/remove-from-cart/${cartSession.id}`" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></Link></td>
                         </tr>
                     </tbody>
@@ -72,17 +72,17 @@
                     <div class="border-bottom pb-2">
                         <div class="d-flex justify-content-between mb-3">
                             <h6>Subtotal</h6>
-                            <h6>$150</h6>
+                            <h6>${{ cartSubTotal }}</h6>
                         </div>
-                        <div class="d-flex justify-content-between">
+                        <!-- <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Shipping</h6>
                             <h6 class="font-weight-medium">$10</h6>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="pt-2">
                         <div class="d-flex justify-content-between mt-2">
                             <h5>Total</h5>
-                            <h5>$160</h5>
+                            <h5>${{ cartSubTotal }}</h5>
                         </div>
                         <Link href="/checkout" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</Link>
                     </div>
@@ -98,7 +98,8 @@ import FrontendLayout from '../../Shared/FrontendLayout.vue';
 export default {
     layout: FrontendLayout,
     props: {
-        cartSessions: Object
+        cartSessions: Object,
+        cartSubTotal: Object,
     },
 
     data() {
