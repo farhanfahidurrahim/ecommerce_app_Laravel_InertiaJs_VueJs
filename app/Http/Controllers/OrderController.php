@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Carbon\Carbon;
@@ -14,6 +13,17 @@ class OrderController extends Controller
     public function orderPlace(Request $request)
     {
         //return $request->all();
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'country' => 'required',
+            'city' => 'required',
+            'district' => 'required',
+            'postal_code' => 'required',
+        ]);
+
         $cartSessions=session()->get('cart');
         $cartSubTotal=0;
         $item_count=count($cartSessions);

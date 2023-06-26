@@ -25,39 +25,48 @@
                             <div class="col-md-6 form-group">
                                 <label>Full Name</label>
                                 <input v-model="form.name" class="form-control" type="text" placeholder="Enter Full Name">
+                                <div v-if="errors.name" style="color: red;">{{ errors.name }}</div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>E-mail</label>
                                 <input v-model="form.email" class="form-control" type="email" placeholder="Enter Valid Email">
+                                <div v-if="errors.email" style="color: red;">{{ errors.email }}</div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Mobile No</label>
                                 <input v-model="form.phone" class="form-control" type="tel" placeholder="Enter Phone No">
+                                <div v-if="errors.phone" style="color: red;">{{ errors.phone }}</div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Address</label>
                                 <input v-model="form.address" class="form-control" type="text" placeholder="Enter Full Address">
+                                <div v-if="errors.address" style="color: red;">{{ errors.address }}</div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Country</label>
                                 <select v-model="form.country" class="custom-select">
                                     <option selected value="bangladesh">Bangladesh</option>
-                                    <option>Afghanistan</option>
-                                    <option>Albania</option>
-                                    <option>Algeria</option>
+                                    <option>India</option>
+                                    <option>USA</option>
+                                    <option>China</option>
+                                    <option>Australia</option>
                                 </select>
+                                <div v-if="errors.country" style="color: red;">{{ errors.country }}</div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>City</label>
                                 <input v-model="form.city" class="form-control" type="text" placeholder="Enter City">
+                                <div v-if="errors.city" style="color: red;">{{ errors.city }}</div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>State</label>
                                 <input v-model="form.district" class="form-control" type="text" placeholder="Enter District">
+                                <div v-if="errors.district" style="color: red;">{{ errors.district }}</div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Postal Code</label>
                                 <input v-model="form.postal_code" class="form-control" type="number" placeholder="Enter Postal Code">
+                                <div v-if="errors.postal_code" style="color: red;">{{ errors.postal_code }}</div>
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="custom-control custom-checkbox">
@@ -202,6 +211,7 @@ import FrontendLayout from '../../Shared/FrontendLayout.vue';
 export default {
     layout: FrontendLayout,
     props: {
+        errors: Object,
         cartSessions: Object,
         cartSubTotal: String,
     }
