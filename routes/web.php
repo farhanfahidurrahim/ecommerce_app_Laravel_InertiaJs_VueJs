@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,7 +48,7 @@ Route::post('/upsert-product-quantity', [CartController::class, 'upsertQuantity'
 //Checkout
 Route::middleware('auth')->group(function(){
     Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
-    Route::post('/order-place', [CartController::class, 'orderPlace'])->name('order.place');
+    Route::post('/order-place', [OrderController::class, 'orderPlace'])->name('order.place');
 });
 
 

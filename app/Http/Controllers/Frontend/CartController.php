@@ -98,10 +98,4 @@ class CartController extends Controller
         return Inertia::render('Frontend/Checkout', compact('cartSessions','cartSubTotal'));
     }
 
-    public function orderPlace(Request $request)
-    {
-        return $request->all();
-        return Inertia::render('Frontend/OrderPlace');
-    }
-
 }

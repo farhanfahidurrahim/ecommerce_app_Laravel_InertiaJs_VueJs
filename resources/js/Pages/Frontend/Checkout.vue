@@ -166,7 +166,7 @@
                         <div class="bg-light p-30">
                             <div class="form-group">
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="cod" id="paypal">
+                                    <input v-model="form.payment_method" value="cod" type="radio" class="custom-control-input" name="cod" id="paypal">
                                     <label class="custom-control-label" for="paypal">Cash On Delivery</label>
                                 </div>
                             </div>
@@ -220,6 +220,7 @@ const form = reactive({
     city: null,
     district: null,
     postal_code: null,
+    payment_method: null,
 })
 function submit(){
     router.post('/order-place',form)
