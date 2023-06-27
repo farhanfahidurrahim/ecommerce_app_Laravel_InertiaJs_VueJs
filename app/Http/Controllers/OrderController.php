@@ -7,6 +7,7 @@ use App\Models\OrderItem;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class OrderController extends Controller
 {
@@ -58,5 +59,12 @@ class OrderController extends Controller
             session()->forget('cart');
             return redirect('/')->withSuccess('Your Order Has Been Placed!');
         }
+    }
+
+    //---------------- Admin-Order -------------
+    public function adminIndex()
+    {
+        $orders=Order::all();
+        return Inertia::render('Admin/Order/Index', compact('orders'));
     }
 }

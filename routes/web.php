@@ -87,3 +87,6 @@ Route::post('/product/store', [ProductController::class, 'store']);
 Route::get('/product/{id}/edit', [ProductController::class, 'edit']);
 Route::post('/product/{id}/update', [ProductController::class, 'update']);
 Route::post('/product/{id}/delete', [ProductController::class, 'destroy']);
+
+//Order  Section
+Route::get('/order', [OrderController::class, 'adminIndex'])->name('order.admin.index');
