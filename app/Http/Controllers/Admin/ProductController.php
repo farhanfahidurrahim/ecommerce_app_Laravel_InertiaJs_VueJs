@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,8 +20,9 @@ class ProductController extends Controller
 
     public function create()
     {
+        $brands=Brand::all();
         $categories=Category::all();
-        return Inertia::render('Admin/Product/Create', compact('categories'));
+        return Inertia::render('Admin/Product/Create', compact('categories','brands'));
     }
 
     public function store(Request $request)

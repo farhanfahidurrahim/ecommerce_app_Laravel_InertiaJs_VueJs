@@ -38,8 +38,16 @@
                                     <div v-if="errors.product_image" style="color: red;">{{ errors.product_image }}</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="sl-position">Product Category</label>
-                                    <select v-model="form.category_id" class="form-control">
+                                    <label for="sl-position">Select Product Brand</label>
+                                    <select v-model="form.brand_id" class="form-control" value="">
+                                        <option disabled>Choose Brand</option>
+                                        <option v-for="brand in brands" :value="brand.id">{{ brand.name }}</option>
+                                    </select>
+                                    <div v-if="errors.brand_id" style="color: red;">{{ errors.brand_id }}</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sl-position">Select Product Category</label>
+                                    <select v-model="form.category_id" class="form-control" value="" id="category">
                                         <option disabled>Choose Category</option>
                                         <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
                                     </select>
@@ -83,6 +91,7 @@ export default {
     layout: AdminLayout,
     props: {
         errors: Object,
+        brands: Object,
         categories: Object
     }
 }
@@ -94,6 +103,7 @@ import { reactive} from 'vue'
 const form = reactive({
     product_name:null,
     product_image:null,
+    brand_id:null,
     category_id:null,
     qty:null,
     price:null,

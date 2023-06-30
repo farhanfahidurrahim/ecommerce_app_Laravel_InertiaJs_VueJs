@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->enum('status',['pending','processing','completed','cancel']);
-            $table->decimal('grand_total',20,6);
+            $table->decimal('grand_total',20,2);
             $table->unsignedInteger('item_count');
 
             $table->string('payment_method');
